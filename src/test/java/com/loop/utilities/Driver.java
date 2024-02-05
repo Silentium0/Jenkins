@@ -51,6 +51,11 @@ public class Driver {
                             String gridAddress = "54.236.125.163";
                             URL url = new URL("http://" + gridAddress + ":4444/wd/hub");
                             DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
+                            ChromeOptions chromeOptions = new ChromeOptions();
+                            chromeOptions.addArguments("--headless");
+                            chromeOptions.addArguments("--no-sandbox");
+                            chromeOptions.addArguments("--disable-dev-shm-usage");
+                            desiredCapabilities.merge(chromeOptions);
                             driver = new RemoteWebDriver(url, desiredCapabilities);
                         } catch (Exception e) {
                             e.printStackTrace();
