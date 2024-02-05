@@ -3,8 +3,13 @@ package com.loop.utilities;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
+import java.net.URL;
 import java.time.Duration;
 
 public class Driver {
@@ -39,6 +44,17 @@ public class Driver {
                     case "firefox":
                         WebDriverManager.firefoxdriver().setup();
                         driver = new FirefoxDriver();
+                        break;
+                    case "remote-chrome-linux":
+                        try {
+                            // assign your grid server address
+                            String gridAddress = "54.236.125.163";
+                            URL url = new URL("http://" + gridAddress + ":4444/wd/hub");
+                            DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
+                            driver = new RemoteWebDriver(url, desiredCapabilities);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                         break;
                 }
                 driver.manage().window().maximize();

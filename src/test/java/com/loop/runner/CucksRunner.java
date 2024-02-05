@@ -12,7 +12,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features",
         glue = "com/loop/step_definition",
         dryRun = false,
-        tags = "@B2G3-252"
+        tags = "@test1"
 
 )
 public class CucksRunner {

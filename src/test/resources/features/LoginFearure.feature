@@ -20,7 +20,7 @@ Feature: Docuport Login Logout Fearure
     Then user should see the home page for employees
     Then  user need to click Batch1 Group3
     Then  user need to click LogOut button
-
+  @test1
   Scenario: Login as a advisor
     When user enter username for advisor
     And user enter password for advisor
